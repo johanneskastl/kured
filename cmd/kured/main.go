@@ -289,7 +289,7 @@ func commandReboot(nodeID string) {
 	}
 
 	// Relies on hostPID:true and privileged:true to enter host mount space
-	rebootCmd := newCommand("/usr/bin/nsenter", "-m/proc/1/ns/mnt", "/bin/systemctl", "reboot")
+	rebootCmd := newCommand("/usr/bin/nsenter", "-m/proc/1/ns/mnt", "/usr/bin/systemctl", "reboot")
 	if err := rebootCmd.Run(); err != nil {
 		log.Fatalf("Error invoking reboot command: %v", err)
 	}
